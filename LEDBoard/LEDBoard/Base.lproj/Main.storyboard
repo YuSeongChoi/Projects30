@@ -65,7 +65,7 @@
         <scene sceneID="iPr-bL-DVA">
             <objects>
                 <viewController id="Zrx-cE-1iX" customClass="SettingViewController" customModule="LEDBoard" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rDL-nu-wmw" customClass="하지만">
+                    <view key="view" contentMode="scaleToFill" id="rDL-nu-wmw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
