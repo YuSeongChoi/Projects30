@@ -5,6 +5,11 @@
 //  Created by Mac on 2022/01/09.
 //
 
+/**
+  - UIStackView : Axis(방향), Distribution(분배), Alignment(정렬), Spacing(간격)
+  - IBInspectable(storyboard 적용), IBDesignable(실시간 적용)
+ */
+
 import UIKit
 
 enum Operation {
