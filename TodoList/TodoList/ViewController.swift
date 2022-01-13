@@ -9,12 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var tasks = [Task]()
+    var tasks = [Task]() {
+        didSet {
+            self.saveTasks()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.loadTasks()
     }
 
     @IBAction func tapEditButton(_ sender: Any) {
@@ -40,6 +45,29 @@ class ViewController: UIViewController {
         }
         self.present(alert, animated: true, completion: nil)
     }
+
+    // UserDefaults에 데이터 저장 (싱글톤)
+    func saveTasks() {
+        let data = self.tasks.map {
+            [
+                "title": $0.title,
+                "done": $0.done
+            ]
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(data, forKey: "tasks")
+    }
+    
+    // UserDefaults에서 데이터 로드
+    func loadTasks() {
+        let userDefaults = UserDefaults.standard
+        guard let data = userDefaults.object(forKey: "tasks") as? [[String: Any]] else { return }
+        self.tasks = data.compactMap {
+            guard let title = $0["title"] as? String else { return nil }
+            guard let done = $0["done"] as? Bool else { return nil}
+            return Task(title: title, done: done)
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -51,6 +79,11 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let task = self.tasks[indexPath.row]
         cell.textLabel?.text = task.title
+        if task.done {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -58,5 +91,10 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var task = self.tasks[indexPath.row]
+        task.done = !task.done
+        self.tasks[indexPath.row] = task
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }
