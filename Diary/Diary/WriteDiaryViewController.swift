@@ -20,6 +20,7 @@ class WriteDiaryViewController: UIViewController {
         super.viewDidLoad()
         self.configureContentsTextView()
         self.configureDatePicker()
+        self.configureInputField()
         self.confirmButton.isEnabled = false
     }
     
@@ -48,11 +49,21 @@ class WriteDiaryViewController: UIViewController {
         formatter.locale = Locale(identifier: "ko_KR")
         self.diaryDate = datePicker.date
         self.dateTextField.text = formatter.string(from: datePicker.date)
+        self.dateTextField.sendActions(for: .editingChanged)
     }
     
     private func configureInputField() {
         self.contentsTextView.delegate = self
-        
+        self.titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
+        self.dateTextField.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc private func titleTextFieldDidChange(_ textField: UITextField) {
+        self.validateInputField()
+    }
+    
+    @objc private func dateTextFieldDidChange(_ textField: UITextField) {
+        self.validateInputField()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

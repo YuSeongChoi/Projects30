@@ -18,6 +18,7 @@
 		045EC68C279184880094ED19 /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC68B279184880094ED19 /* StarCell.swift */; };
 		045EC68E279186140094ED19 /* WriteDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC68D279186140094ED19 /* WriteDiaryViewController.swift */; };
 		045EC690279186440094ED19 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC68F279186440094ED19 /* DiaryDetailViewController.swift */; };
+		045EC692279618D00094ED19 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC691279618D00094ED19 /* Diary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		045EC68B279184880094ED19 /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
 		045EC68D279186140094ED19 /* WriteDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryViewController.swift; sourceTree = "<group>"; };
 		045EC68F279186440094ED19 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
+		045EC691279618D00094ED19 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				045EC68B279184880094ED19 /* StarCell.swift */,
 				045EC68D279186140094ED19 /* WriteDiaryViewController.swift */,
 				045EC68F279186440094ED19 /* DiaryDetailViewController.swift */,
+				045EC691279618D00094ED19 /* Diary.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				045EC68C279184880094ED19 /* StarCell.swift in Sources */,
 				045EC672279180680094ED19 /* AppDelegate.swift in Sources */,
 				045EC674279180680094ED19 /* SceneDelegate.swift in Sources */,
+				045EC692279618D00094ED19 /* Diary.swift in Sources */,
 				045EC690279186440094ED19 /* DiaryDetailViewController.swift in Sources */,
 				045EC686279183290094ED19 /* DiaryCell.swift in Sources */,
 				045EC68A2791838C0094ED19 /* StarViewController.swift in Sources */,
