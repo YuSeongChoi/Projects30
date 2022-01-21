@@ -12,6 +12,9 @@ import UIKit
  2. Delegate Pattern
  3. CollectionViewFlowLayout
  4. 프로퍼티 옵저버
+ 5. touchEndEvent
+ 6. Notification Center : 등록된 이벤트가 발생하면 해당 이벤트에 대한 행동을 취하는 것
+ 7. deinit
  */
 
 class ViewController: UIViewController {
@@ -27,6 +30,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(editDiaryNotifcation(_:)),
+            name: NSNotification.Name("editDiary"),
+            object: nil)
     }
     
     private func configureCollectionView() {
@@ -34,6 +42,16 @@ class ViewController: UIViewController {
         self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+    }
+    
+    @objc func editDiaryNotifcation(_ notification: Notification) {
+        guard let diary = notification.object as? Diary else { return }
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        self.diaryList[row] = diary
+        self.diaryList = self.diaryList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,10 +77,10 @@ class ViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         guard let data = userDefaults.object(forKey: "diaryList") as? [[String: Any]] else { return }
         self.diaryList = data.compactMap {
-            guard let title = $0["title"] as? String else { return nil}
-            guard let contents = $0["contents"] as? String else { return nil}
-            guard let date = $0["date"] as? Date else { return nil}
-            guard let isStar = $0["isStar"] as? Bool else { return nil}
+            guard let title = $0["title"] as? String else { return nil }
+            guard let contents = $0["contents"] as? String else { return nil }
+            guard let date = $0["date"] as? Date else { return nil }
+            guard let isStar = $0["isStar"] as? Bool else { return nil }
             return Diary(title: title, contents: contents, date: date, isStar: isStar)
         }
         self.diaryList = self.diaryList.sorted(by: {
