@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     private var diaryList = [Diary]() {
         didSet {
+//            print("diaryList에 저장!")
             self.saveDiaryList()
         }
     }
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        // Noti 받기
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(editDiaryNotifcation(_:)),
@@ -142,5 +144,9 @@ extension ViewController: DiaryDetailViewDelegate {
     func didSelectedDelete(indexPath: IndexPath) {
         self.diaryList.remove(at: indexPath.row)
         self.collectionView.deleteItems(at: [indexPath])
+    }
+    
+    func didSelecteStar(indexPath: IndexPath, isStar: Bool) {
+        self.diaryList[indexPath.row].isStar = isStar
     }
 }

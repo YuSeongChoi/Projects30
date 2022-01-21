@@ -248,7 +248,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StartCell" id="ZG6-8E-v4X" customClass="StarCell" customModule="Diary" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StarCell" id="ZG6-8E-v4X" customClass="StarCell" customModule="Diary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xhq-kl-Rph">
@@ -280,6 +280,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="80"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="891-HT-L3u" id="Dbj-na-0E6"/>
+                                            <outlet property="titleLabel" destination="VVC-Mh-FJG" id="R8s-37-iCU"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -294,6 +298,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ds7-l3-TtS"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ecQ-kS-oww" id="CMp-CQ-CRG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="np2-kk-Ok4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

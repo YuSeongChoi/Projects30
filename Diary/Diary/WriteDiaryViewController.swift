@@ -46,6 +46,7 @@ class WriteDiaryViewController: UIViewController {
         case .new:
             self.delegate?.didSelectedRegister(diary: diary)
             
+            // Notifi 보내기
         case let .edit(indexPath, _):
             NotificationCenter.default.post(
                 name: NSNotification.Name("editDiary"),
@@ -53,9 +54,6 @@ class WriteDiaryViewController: UIViewController {
                 userInfo: [
                     "indexPath.row" : indexPath.row
                 ])
-            
-        default:
-            break
         }
         self.delegate?.didSelectedRegister(diary: diary)
         self.navigationController?.popViewController(animated: true)
