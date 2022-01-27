@@ -9,7 +9,8 @@ import UIKit
 import AudioToolbox
 
 /**
-  1. DispatchSource Timer
+ 1. DispatchSource Timer
+ 2. CGAffineTransform
  */
 
 enum TimerStatus {
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var toggleButton: UIButton!
+    @IBOutlet var imageView: UIImageView!
     
     // default time
     var duration = 60
@@ -68,7 +70,12 @@ class ViewController: UIViewController {
                 let seconds = (self.currentSeconds % 3600) % 60
                 self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
                 self.progressView.progress = Float(self.currentSeconds) / Float(self.duration)
-                
+                UIView.animate(withDuration: 0.5, delay: 0) {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi)
+                }
+                UIView.animate(withDuration: 0.5, delay: 0.5) {
+                    self.imageView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+                }
                 
                 if self.currentSeconds ?? 0 <= 0 {
                     // 타이머가 종료
@@ -86,8 +93,12 @@ class ViewController: UIViewController {
         }
         self.timerStatus = .end
         self.cancelButton.isEnabled = false
-        self.setTimerInfoViewVisible(isHidden: true)
-        self.datePicker.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.timerLabel.alpha = 0
+            self.progressView.alpha = 0
+            self.datePicker.alpha = 1
+            self.imageView.transform = .identity
+        }
         self.toggleButton.isSelected = false
         self.timer?.cancel()
         self.timer = nil
@@ -99,8 +110,11 @@ class ViewController: UIViewController {
         case .end:
             self.currentSeconds = self.duration
             self.timerStatus = .start
-            self.setTimerInfoViewVisible(isHidden: false)
-            self.datePicker.isHidden = true
+            UIView.animate(withDuration: 0.5) {
+                self.timerLabel.alpha = 1
+                self.progressView.alpha = 1
+                self.datePicker.alpha = 0
+            }
             self.toggleButton.isSelected = true
             self.cancelButton.isEnabled = true
             self.startTimer()
