@@ -13,6 +13,7 @@
 		045EC6C727A595E20094ED19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045EC6C527A595E20094ED19 /* Main.storyboard */; };
 		045EC6C927A595E50094ED19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045EC6C827A595E50094ED19 /* Assets.xcassets */; };
 		045EC6CC27A595E50094ED19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045EC6CA27A595E50094ED19 /* LaunchScreen.storyboard */; };
+		045EC6D427AA87250094ED19 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC6D327AA87250094ED19 /* WeatherInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		045EC6C827A595E50094ED19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045EC6CB27A595E50094ED19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		045EC6CD27A595E50094ED19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045EC6D327AA87250094ED19 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				045EC6C827A595E50094ED19 /* Assets.xcassets */,
 				045EC6CA27A595E50094ED19 /* LaunchScreen.storyboard */,
 				045EC6CD27A595E50094ED19 /* Info.plist */,
+				045EC6D327AA87250094ED19 /* WeatherInformation.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045EC6C427A595E20094ED19 /* ViewController.swift in Sources */,
+				045EC6D427AA87250094ED19 /* WeatherInformation.swift in Sources */,
 				045EC6C027A595E20094ED19 /* AppDelegate.swift in Sources */,
 				045EC6C227A595E20094ED19 /* SceneDelegate.swift in Sources */,
 			);
